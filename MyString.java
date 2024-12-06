@@ -9,7 +9,6 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
-        System.out.println(remove("committee", "meet"));
         //// Put your other tests here.
     }
 
@@ -46,10 +45,13 @@ public class MyString {
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
         if(str1.length() == 0)
-            return false;
+            return true;
         for (int i = 0; i < str1.length(); i++) {
             if(countChar(str2, str1.charAt(i)) < 1)
                 return false;
+            //need to remove the character from the string so we dont count it more than once
+            int charIndex = str2.indexOf(str1.charAt(i));
+            str2 = str2.substring(0, charIndex) + str2.substring(charIndex + 1);
         }
         return true;
     }
@@ -66,8 +68,10 @@ public class MyString {
         //// Replace the following statement with your code
         String newString = "";
         for (int i = 0; i < str.length(); i++) {
+            if(i > 0)
+                newString += " ";
             newString += str.charAt(i);
-            newString += " ";
+            
         }
         return newString;
     }
