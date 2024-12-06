@@ -66,6 +66,7 @@ public class Scrabble {
 		//// Replace the following statement with your code
 		int score = 0;
 		//add normal scoring without length
+		
 		for (int i = 0; i < word.length(); i++) {
 			score += SCRABBLE_LETTER_VALUES[(int) word.charAt(i) - 97];	
 		}
@@ -74,7 +75,9 @@ public class Scrabble {
 		{
 			score += 1000;
 		}
-
+		if(word.length() == HAND_SIZE){
+			score += 50;
+		}
 		//need to add check for length of hand but no hand is declared.
 
 		return score;
@@ -118,11 +121,6 @@ public class Scrabble {
 			if(MyString.subsetOf(input, hand) && isWordInDictionary(input))
 			{
 				int addToScore = 0;
-				//check if first input uses full hand
-				if(score == 0 && input.length() == hand.length())
-				{
-					addToScore += 50;
-				}
 				//add to score either way
 				addToScore += wordScore(input);
 				score += addToScore;
@@ -168,10 +166,10 @@ public class Scrabble {
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
 		// testBuildingTheDictionary();  
-		// testScrabbleScore();    
+		testScrabbleScore();    
 		// testCreateHands();  
 		// testPlayHands();
-		playGame();
+		// playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
