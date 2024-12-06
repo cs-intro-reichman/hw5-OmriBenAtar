@@ -1,3 +1,4 @@
+
 /**
  * A library of string functions.
  */
@@ -8,6 +9,7 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
+        System.out.println(remove("committee", "meet"));
         //// Put your other tests here.
     }
 
@@ -21,7 +23,13 @@ public class MyString {
      */
     public static int countChar(String str, char ch) {
         //// Replace the following statement with your code
-        return 0;
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if(str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -37,7 +45,13 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
-        return false;
+        if(str1.length() == 0)
+            return false;
+        for (int i = 0; i < str1.length(); i++) {
+            if(countChar(str2, str1.charAt(i)) < 1)
+                return false;
+        }
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -50,7 +64,12 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-        return null;
+        String newString = "";
+        for (int i = 0; i < str.length(); i++) {
+            newString += str.charAt(i);
+            newString += " ";
+        }
+        return newString;
     }
   
     /**
@@ -65,7 +84,13 @@ public class MyString {
      */
     public static String randomStringOfLetters(int n) {
         //// Replace the following statement with your code
-        return null;
+        String rStr = "";
+        int randomIndex = 0;
+        for (int i = 0; i < n; i++) {
+            randomIndex =  (int) (Math.random() * 25) + 97;
+            rStr += (char) randomIndex;
+        }
+        return rStr;
     }
 
     /**
@@ -78,8 +103,21 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+        String newStr = "";
+        boolean add = true;
+        for (int i = 0; i < str1.length(); i++) {
+            for (int j = 0; j < str2.length(); j++) {
+                if(str1.charAt(i) == str2.charAt(j)){
+                    add = false;
+                    str2 = str2.substring(0, j) + str2.substring(j + 1);
+                }
+            }
+            if(add){
+                newStr += str1.charAt(i);
+            }
+            add = true;
+        }
+        return newStr;
     }
 
     /**
