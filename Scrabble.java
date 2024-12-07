@@ -129,7 +129,7 @@ public class Scrabble {
 				System.out.println(input + " earned " + addToScore + " points. Score: " + score + " points");
 			} else {
 				//word is bad
-				System.out.println("No such word in the dictionary, Try again.");
+				System.out.println("Invalid word, Try again.");
 			}
 			System.out.println();
 		}
