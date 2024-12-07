@@ -127,11 +127,11 @@ public class Scrabble {
 				//remove used letters
 				hand = MyString.remove(hand, input);
 				System.out.println(input + " earned " + addToScore + " points. Score: " + score + " points");
+				System.out.println();
 			} else {
 				//word is bad
-				System.out.println("Invalid word, Try again.");
+				System.out.println("Invalid word. Try again.");
 			}
-			System.out.println();
 		}
 		if (hand.length() == 0) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points");
